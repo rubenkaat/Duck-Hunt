@@ -6,8 +6,9 @@ var duckMiss = 0;
 
 function checkScore(){
 	var totalShots = Number(duckHit) + Number(duckMiss);
-	if(totalShots == 4){
+	if(totalShots == 20){
 		alert("Game Over");
+		alert("You got " + duckHit + " points");
 	}
 }
 
@@ -41,38 +42,52 @@ function setTop(change){
 function setLeft(change){
 	duck.style.left = parseInt(duck.style.left) + change + 'px'
 }
+function checkPosition(){
+	if(parseInt(duck.style.top) > 400){
+		setTop(-200);
+	}
+	if(parseInt(duck.style.top) < 0){
+		setTop(+200);
+	}
+	if(parseInt(duck.style.left) > 1300){
+		setLeft(-200);
+	}
+	if(parseInt(duck.style.left) < 0){
+		setLeft(+200);
+	}
+}
 
 function showPosition(){
 	var positie = Math.floor(Math.random(positions) * positions.length);
 	console.log(positions[positie]);
 	if(positions[positie] == "N"){
 		setTop(-75);
+		checkPosition();
 	}else if(positions[positie] == "NE"){
 		setTop(-75);
 		setLeft(+75);
+		checkPosition();
 	}else if(positions[positie] == "E"){
 		setLeft(+75);
+		checkPosition();
 	}else if(positions[positie] == "SE"){
 		setTop(+75);
 		setLeft(-75);
+		checkPosition();
 	}else if(positions[positie] == "S"){
 		setTop(+75);
+		checkPosition();
 	}else if(positions[positie] == "SW"){
 		setTop(+75);
 		setLeft(-75);
+		checkPosition();
 	}else if(positions[positie] == "W"){
 		setLeft(-75);
+		checkPosition();
 	}else if(positions[positie] == "NW"){
 		setTop(-75);
 		setLeft(-75);
+		checkPosition();
 	}
 }
 setInterval(showPosition, 500);
-
-
-var totalShots = Number(duckHit) + Number(duckMiss);
-
-
-if(duckHit == 2){
-	alert("Game Over");
-}
