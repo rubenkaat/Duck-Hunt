@@ -17,6 +17,7 @@ duck.onclick = function(event){
 	duckHit += 1;
 	checkScore();
 	event.stopPropagation();
+	//showposition
 }
 stage.onclick = function(event){
 	console.log('miss');
@@ -60,34 +61,52 @@ function checkPosition(){
 function showPosition(){
 	var positie = Math.floor(Math.random(positions) * positions.length);
 	console.log(positions[positie]);
-	if(positions[positie] == "N"){
-		setTop(-75);
-		checkPosition();
-	}else if(positions[positie] == "NE"){
-		setTop(-75);
-		setLeft(+75);
-		checkPosition();
-	}else if(positions[positie] == "E"){
-		setLeft(+75);
-		checkPosition();
-	}else if(positions[positie] == "SE"){
-		setTop(+75);
-		setLeft(-75);
-		checkPosition();
-	}else if(positions[positie] == "S"){
-		setTop(+75);
-		checkPosition();
-	}else if(positions[positie] == "SW"){
-		setTop(+75);
-		setLeft(-75);
-		checkPosition();
-	}else if(positions[positie] == "W"){
-		setLeft(-75);
-		checkPosition();
-	}else if(positions[positie] == "NW"){
-		setTop(-75);
-		setLeft(-75);
-		checkPosition();
-	}
-}
+
+	switch (positions[positie]){
+		case 'N':
+			setTop(-75);
+			checkPosition();
+			break;
+
+		case 'NE':
+			setTop(-75);
+			setLeft(+75);
+			checkPosition();
+			break;
+
+		case 'E':
+			setLeft(+75);
+			checkPosition();
+			break;
+
+		case 'SE':
+			setTop(+75);
+			setLeft(-75);
+			checkPosition();
+			break;
+
+		case 'S':
+			setTop(+75);
+			checkPosition();
+			break;
+
+		case 'SW':
+			setTop(+75);
+			setLeft(-75);
+			checkPosition();
+			break;
+
+		case 'W':
+			setLeft(-75);
+			checkPosition();
+			break;
+
+		case 'NW':
+			setTop(-75);
+			setLeft(-75);
+			checkPosition();
+			break;
+		}
+	};
+
 setInterval(showPosition, 500);
